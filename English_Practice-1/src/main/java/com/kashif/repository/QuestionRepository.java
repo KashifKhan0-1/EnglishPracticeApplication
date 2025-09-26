@@ -1,6 +1,8 @@
 package com.kashif.repository;
 
 import com.kashif.model.Question;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.*;
@@ -8,9 +10,14 @@ import java.util.*;
 @Repository
 public class QuestionRepository {
 
-	private final String URL = "jdbc:mysql://localhost:3306/englishpracticedb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
-	private final String USER = "root";
-    private final String PASS = "@MILEstone123#";
+    @Value("${spring.datasource.url}")
+    private String URL;
+    
+    @Value("${spring.datasource.username}")
+    private String USER;
+    
+    @Value("${spring.datasource.password}")
+    private String PASS;
 
     // Store recently used question IDs for each user session
     private Map<String, Set<Integer>> userUsedQuestions = new HashMap<>();
