@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["...", "jdk21"]
+
+[phases.build]
+cmds = ["./mvnw clean install -DskipTests"]
+
+[start]
+cmd = "java -jar target/EnglishPracticeApp-0.0.1-SNAPSHOT.jar"
